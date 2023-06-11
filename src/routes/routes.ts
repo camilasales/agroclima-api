@@ -7,6 +7,7 @@ import UsuarioValidator from "../validators/UsuarioValidator";
 import ProprietarioValidator from "../validators/ProprietarioValidator";
 
 import authMiddleware from '../middlewares/auth.middleware';
+import ClimaTempoController from '../controllers/ClimaTempoController';
 
 export class Routes {
     constructor() {
@@ -37,5 +38,11 @@ export class Routes {
         const proprietarioValidator = new ProprietarioValidator();
         app.post("/proprietario", [proprietarioValidator.validarProprietarioCadastrar], proprietarioController.cadastrar);
         app.get("/proprietario/:codProprietario", proprietarioController.ver);
+
+        //ClimaTempo
+        const climaTempoController = new ClimaTempoController();
+        app.post("/clima-tempo/clima-atual", climaTempoController.obterClimaAtualByLocal);
+        app.post("/clima-tempo/previsao-tempo", climaTempoController.obterPrevisaoTempo);
+        app.post("/clima-tempo/previsao-chuva", climaTempoController.obterPrevisaoChuva);
     }
 }

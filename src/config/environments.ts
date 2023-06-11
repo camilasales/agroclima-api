@@ -17,4 +17,5 @@ export const environments = {
     db_host: process.env.DB_HOST,
     db_port: process.env.DB_PORT,
     jwt_secret: process.env.JWT_SECRET,
+    meteum_key: process.env.METEUM_KEY,
 };
